@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Clonar Repositorio') {
             steps {
-                git url: 'https://github.com/henrygiraldo27/App_Poli.git'
+                git branch: 'main', url: 'https://github.com/henrygiraldo27/App_Poli.git'
             }
         }
         stage('Construir y Desplegar') {
