@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/style.css">
+    <link rel="stylesheet" href="https://cdn.datatables.net/2.0.7/css/dataTables.dataTables.css">
+    <title>DASHBOARD POLI</title>
+</head>
+
+<body>
+    <!-- Menu del sistema -->
+    <nav class="menu">
+        <h1>DATOS VENTAS</h1>
+        <ul>
+            <li><a href="index.html">DASHBOARD</a></li>
+            <li><a href="table.html">DATOS VENTAS</a></li>
+        </ul>
+    </nav>
+
+    <section class="sectionTable">
+        <table id="tableData" class="stripe" style="width:100%">
+            <thead>
+                <tr>
+                    <th>vendedor</th>
+                    <th>region</th>
+                    <th>producto</th>
+                    <th>ventas</th>
+                    <th>valor</th>
+                </tr>
+            </thead>
+            <tbody id="tableBody"></tbody>
+        </table>
+    </section>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+    <script>
+
+        //libreria data table 
+        new DataTable('#tableData');
+
+        // Consulta para poblar la tabla
+        async function fetchDataTable() {
+            let dataTr = '';
+
+            try {
+                const response = await fetch('http://localhost:3000/api/tableData');
+                if (!response.ok) {
+                    throw new Error('Error en la solicitud: ' + response.statusText);
+                }
+                const data = await response.json();
+                
+                data.forEach(element => {
+                    dataTr += `<tr>
+                        <td>${element.Vendedor}</td>
+                        <td>${element.Region}</td>
+                        <td>${element.Producto}</td>
+                        <td>${element.Ventas}</td>
+                        <td>$${element.Valor}</td>
+                    </tr>`;
+                });
+
+                document.getElementById('tableBody').innerHTML = dataTr;
+
+            } catch (error) {
+                console.error('Error al obtener los datos de los vendedores:', error);
+            }
+        }
+
+        fetchDataTable();
+
+    </script>
+</body>
+</html>

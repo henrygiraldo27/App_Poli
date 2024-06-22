@@ -1,0 +1,20 @@
+services:
+  apiapp:
+    build:
+      context: ./api/
+    networks:
+     - redConexion
+    ports:
+      - 3000:3001
+
+  dashboardapp:
+    build:
+      context: ./dashboard/
+    networks:
+     - redConexion
+    ports:
+      - 80:80
+
+networks:
+  redConexion:
+    driver: bridge

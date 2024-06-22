@@ -1,0 +1,134 @@
+body{
+    background-color: #e2e2e2;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+    margin: 0px;
+    padding: 0px;
+}
+
+.menu{
+    background-color: #353535;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+.menu h1{
+    color: #2ccafa;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.menu ul{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    gap: 60px;
+    margin-top: 30px;
+}
+
+.menu ul li{
+    color: #ffffff;
+    cursor: pointer;
+    list-style: none;
+    font-weight: bold;
+    margin: 0px 20px;
+}
+
+.menu ul li a{
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.menu ul li:hover{
+    color: #2ccafa;
+}
+
+/* DASHBOARD */
+
+.containerTargets{
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+}
+
+.targetVentas1{
+    background-color: #32a5c9;
+    border-radius: 6px;
+    box-shadow: 0px 0px 15px #000000;
+    padding: 20px;
+    margin: 40px;
+    width: 350px;
+    text-align: center;
+}
+
+.targetVentas2{
+    background-color: #e9830f;
+    border-radius: 6px;
+    box-shadow: 0px 0px 15px #000000;
+    padding: 20px;
+    margin: 40px;
+    width: 300px;
+    text-align: center;
+}
+
+.targetVentas1 h3, .targetVentas2 h3{
+    color: #ffffff;
+    font-size: 1.5rem;
+    text-transform: uppercase;
+}
+
+.targetVentas1 p, .targetVentas2 p{
+    color: #ffffff;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+}
+
+.chars{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    margin: 40px 0px;
+}
+
+.regionChar{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+    width: 800px;
+}
+
+.sellersPie{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 10px;
+    padding: 20px;
+    height: auto;
+    width: 400px;
+}
+
+.sellersProducts{
+    background-color: #ffffff;
+    box-shadow: 0px 0px 10px #000000;
+    border-radius: 10px;
+    margin: 30px 50px;
+    padding: 20px;
+    height: auto;
+    width: 1200px;
+}
+
+/* TABLA DE VENTAS */
+
+.sectionTable{
+    background-color: #ffffff;
+    border-radius: 20px;
+    box-shadow: 5px 5px 10px #747474;
+    padding: 20px;
+    margin: 60px;
+}
+
+.sectionTable table tr th{
+    color: #1ca8d3;
+    text-transform: uppercase;
+}

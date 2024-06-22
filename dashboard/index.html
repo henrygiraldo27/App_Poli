@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="Css/style.css">
+    <title>DASHBOARD POLI</title>
+</head>
+<body>
+
+    <!-- Menu del sistema -->
+    <nav class="menu">
+        <h1>DASHBOARD</h1>
+        <ul>
+            <li><a href="index.html">DASHBOARD</a></li>
+            <li><a href="table.html">DATOS VENTAS</a></li>
+        </ul>
+    </nav>
+
+    <section class="containerTargets">
+        <article class="targetVentas1">
+            <p id="ventasMes"></p>
+            <h3>Total Ventas Mes</h3>
+        </article>
+        
+        <article class="targetVentas2">
+            <p id="cantidadMes"></p>
+            <h3>Cantidad Cajas Mes</h3>
+        </article>
+    </section>
+
+    <section class="chars">
+        <div class="regionChar">
+            <canvas id="regionChar"></canvas>
+        </div>
+        <div class="sellersPie">
+            <canvas id="sellersPie"></canvas>
+        </div>
+    </section>
+
+    <div class="sellersProducts">
+        <canvas id="productChar"></canvas>
+    </div>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js" integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdn.datatables.net/2.0.7/js/dataTables.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="Js/main.js"></script>
+</body>
+</html>
