@@ -8,6 +8,20 @@ pipeline {
             }
         }
 
+        stage('Instalar dependencias y Ejecutar Pruebas Unitarias') {
+            steps {
+                script {
+                    // Cambiar al directorio del proyecto donde está package.json
+                    dir('api/') {
+                        // Instalar dependencias
+                        sh 'npm install'
+                        // Ejecutar las pruebas unitarias
+                        sh 'npm test'
+                    }
+                }
+            }
+        }
+
         stage('Construir y Desplegar') {
             steps {
                 script {
@@ -17,6 +31,19 @@ pipeline {
                     sh 'docker-compose up -d'
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            // Publicar los resultados de las pruebas
+            junit 'test-results.xml'
+        }
+        success {
+            echo 'Las pruebas unitarias se ejecutaron correctamente.'
+        }
+        failure {
+            echo 'Las pruebas unitarias fallaron.'
         }
     }
 }
