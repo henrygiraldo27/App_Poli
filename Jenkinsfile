@@ -8,24 +8,15 @@ pipeline {
             }
         }
 
-        stage('Usar Docker para Node.js') {
-            agent {
-                docker {
-                    image 'node:16'
-                    args '-v /var/run/docker.sock:/var/run/docker.sock'
-                }
+        stage('Instalar Dependencias') {
+            steps {
+                sh 'npm install'
             }
-            stages {
-                stage('Instalar Dependencias') {
-                    steps {
-                        sh 'npm install'
-                    }
-                }
-                stage('Ejecutar Pruebas Unitarias') {
-                    steps {
-                        sh 'npm test'
-                    }
-                }
+        }
+
+        stage('Ejecutar Pruebas Unitarias') {
+            steps {
+                sh 'npm test'
             }
         }
 
