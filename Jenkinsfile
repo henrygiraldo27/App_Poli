@@ -1,5 +1,10 @@
 pipeline {
-    agent any
+    agent {
+        docker {
+            image 'node:16' // Usa una imagen de Node.js con npm preinstalado
+            args '-v /var/run/docker.sock:/var/run/docker.sock' // Para usar Docker dentro del contenedor
+        }
+    }
 
     stages {
         stage('Clonar Repositorio') {
