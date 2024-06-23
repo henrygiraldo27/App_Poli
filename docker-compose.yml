@@ -3,7 +3,7 @@ services:
     build:
       context: ./api/
     networks:
-     - bridge
+     - red_docker
     ports:
       - 3000:3001
 
@@ -11,7 +11,7 @@ services:
     build:
       context: ./dashboard/
     networks:
-     - bridge
+     - red_docker
     ports:
       - 80:80
 
