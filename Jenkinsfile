@@ -19,17 +19,4 @@ pipeline {
             }
         }
     }
-
-    post {
-        always {
-            // Publicar los resultados de las pruebas
-            junit 'test-results.xml'
-        }
-        success {
-            echo 'Las pruebas unitarias se ejecutaron correctamente.'
-        }
-        failure {
-            echo 'Las pruebas unitarias fallaron.'
-        }
-    }
 }
