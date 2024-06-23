@@ -7,6 +7,25 @@ pipeline {
                 git branch: 'main', url: 'https://github.com/henrygiraldo27/App_Poli.git'
             }
         }
+
+        stage('Instalar Dependencias') {
+            steps {
+                script {
+                    // Instalar las dependencias de Node.js
+                    sh 'npm install'
+                }
+            }
+        }
+
+        stage('Ejecutar Pruebas Unitarias') {
+            steps {
+                script {
+                    // Ejecutar las pruebas unitarias
+                    sh 'npm test'
+                }
+            }
+        }
+
         stage('Construir y Desplegar') {
             steps {
                 script {
@@ -16,6 +35,19 @@ pipeline {
                     sh 'docker-compose up -d'
                 }
             }
+        }
+    }
+
+    post {
+        always {
+            // Publicar los resultados de las pruebas
+            junit 'test-results.xml'
+        }
+        success {
+            echo 'Las pruebas unitarias se ejecutaron correctamente.'
+        }
+        failure {
+            echo 'Las pruebas unitarias fallaron.'
         }
     }
 }
