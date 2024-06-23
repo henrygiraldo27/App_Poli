@@ -2,7 +2,7 @@ const axios = require('axios');
 const assert = require('assert');
 
 // Obtén la URL base de la API desde una variable de entorno o constante
-const API_BASE_URL = process.env.API_BASE_URL || 'http://localhost:3000';
+const API_BASE_URL = process.env.API_BASE_URL || 'http://127.0.0.1:3000';
 
 describe('Pruebas de API', function() {
     this.timeout(5000); // Extiende el tiempo de espera en caso de que las solicitudes tarden más de lo esperado
