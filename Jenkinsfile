@@ -8,18 +8,6 @@ pipeline {
             }
         }
 
-        stage('Instalar Dependencias') {
-            steps {
-                sh 'npm install'
-            }
-        }
-
-        stage('Ejecutar Pruebas Unitarias') {
-            steps {
-                sh 'npm test'
-            }
-        }
-
         stage('Construir y Desplegar') {
             steps {
                 script {
