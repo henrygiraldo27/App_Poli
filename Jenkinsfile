@@ -1,10 +1,5 @@
 pipeline {
-    agent {
-        docker {
-            image 'node:16' // Usa una imagen de Node.js con npm preinstalado
-            args '-v /var/run/docker.sock:/var/run/docker.sock' // Para usar Docker dentro del contenedor
-        }
-    }
+    agent any
 
     stages {
         stage('Clonar Repositorio') {
@@ -13,20 +8,23 @@ pipeline {
             }
         }
 
-        stage('Instalar Dependencias') {
-            steps {
-                script {
-                    // Instalar las dependencias de Node.js
-                    sh 'npm install'
+        stage('Usar Docker para Node.js') {
+            agent {
+                docker {
+                    image 'node:16'
+                    args '-v /var/run/docker.sock:/var/run/docker.sock'
                 }
             }
-        }
-
-        stage('Ejecutar Pruebas Unitarias') {
-            steps {
-                script {
-                    // Ejecutar las pruebas unitarias
-                    sh 'npm test'
+            stages {
+                stage('Instalar Dependencias') {
+                    steps {
+                        sh 'npm install'
+                    }
+                }
+                stage('Ejecutar Pruebas Unitarias') {
+                    steps {
+                        sh 'npm test'
+                    }
                 }
             }
         }
