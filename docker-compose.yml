@@ -3,7 +3,7 @@ services:
     build:
       context: ./api/
     networks:
-     - redConexion
+     - bridge
     ports:
       - 3000:3001
 
@@ -11,7 +11,7 @@ services:
     build:
       context: ./dashboard/
     networks:
-     - redConexion
+     - bridge
     ports:
       - 80:80
 
