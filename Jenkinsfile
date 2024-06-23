@@ -19,6 +19,15 @@ pipeline {
             }
         }
 
+        stage('Levantando el servicio...') {
+            steps {
+                // Esperar 30 segundos antes de continuar
+                script {
+                    sleep time: 30, unit: 'SECONDS'
+                }
+            }
+        }
+
         stage('Ejecutar Pruebas Unitarias') {
             steps {
                 script {
