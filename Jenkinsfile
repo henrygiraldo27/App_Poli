@@ -19,4 +19,14 @@ pipeline {
             }
         }
     }
+
+    post {
+        success {
+            echo 'Despliegue completado. Ejecutando Job de pruebas.'
+            build job: 'Pruebas Unitarias', wait: false
+        }
+        failure {
+            echo 'Deploy Falló.'
+        }
+    }
 }
