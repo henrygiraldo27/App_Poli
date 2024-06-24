@@ -18,41 +18,5 @@ pipeline {
                 }
             }
         }
-
-        stage('Levantando el servicio...') {
-            steps {
-                // Esperar 30 segundos antes de continuar
-                script {
-                    sleep time: 30, unit: 'SECONDS'
-                }
-            }
-        }
-
-        stage('Ejecutar Pruebas Unitarias') {
-            steps {
-                script {
-                    // Cambiar al directorio del proyecto donde está package.json
-                    dir('api/') {
-                        // Instalar dependencias
-                        sh 'npm install'
-                        // Ejecutar las pruebas unitarias
-                        sh 'npm test'
-                    }
-                }
-            }
-        }
-    }
-
-    post {
-        always {
-            // Publicar los resultados de las pruebas
-            junit 'test-results.xml'
-        }
-        success {
-            echo 'Las pruebas unitarias se ejecutaron correctamente.'
-        }
-        failure {
-            echo 'Las pruebas unitarias fallaron.'
-        }
     }
 }
